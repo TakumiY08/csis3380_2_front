@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import TodoList from './components/TodoList'
+import CreateTask from './components/CreateTask'
+import EditTask from "./components/EditTask";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' exact element={<TodoList />} />
+          <Route path='/create' element={<CreateTask />} />
+          <Route path='/update/:id' element={<EditTask />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
 }
-
-export default App;
